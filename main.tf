@@ -15,6 +15,6 @@ resource "aws_route53_record" "dynatrace" {
   alias {
     name                   = aws_vpc_endpoint.replace_me.dns_name
     zone_id                = aws_vpc_endpoint.replace_me.hosted_zone_id
-    # evaluate_target_health = true
+    evaluate_target_health = true
   }
 }
