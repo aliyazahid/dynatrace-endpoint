@@ -32,3 +32,9 @@ path "secret/metadata/*" {
 path "secret/data/*" {
   capabilities = ["read"]
 }
+
+
+latest_agent_version=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform-enterprise-agent | jq -r .current_version)
+RUN dnf install -y terraform && dnf clean all
+
+
