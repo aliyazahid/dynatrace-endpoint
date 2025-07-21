@@ -38,3 +38,9 @@ latest_agent_version=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/ter
 RUN dnf install -y terraform && dnf clean all
 
 
+
+latest_agent_version=$(curl -s https://releases.hashicorp.com/tfe-agent/ | \
+  grep -oP 'tfe-agent/\K[0-9]+\.[0-9]+\.[0-9]+(?=/)' | \
+  sort -Vr | \
+  head -n 1)
+
