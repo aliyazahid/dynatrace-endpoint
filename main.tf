@@ -18,3 +18,17 @@ resource "aws_route53_record" "dynatrace" {
     evaluate_target_health = true
   }
 }
+# Allow creating tokens (required by Terraform or some modules)
+path "auth/token/create" {
+  capabilities = ["update"]
+}
+
+# Allow listing secrets in the KV v2 engine
+path "secret/metadata/*" {
+  capabilities = ["list"]
+}
+
+# Allow reading (getting) secrets in KV v2
+path "secret/data/*" {
+  capabilities = ["read"]
+}
