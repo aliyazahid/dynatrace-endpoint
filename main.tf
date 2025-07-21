@@ -44,3 +44,12 @@ latest_agent_version=$(curl -s https://releases.hashicorp.com/tfe-agent/ | \
   sort -Vr | \
   head -n 1)
 
+
+
+
+
+RUN latest_agent_version=$(curl -s https://releases.hashicorp.com/tfe-agent/ | \
+      grep -o 'tfe-agent/[0-9]\+\.[0-9]\+\.[0-9]\+/' | \
+      cut -d'/' -f2 | \
+      sort -Vr | \
+      head -n 1) && \
